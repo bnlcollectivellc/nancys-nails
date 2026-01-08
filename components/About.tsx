@@ -1,12 +1,40 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 
 export default function About() {
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="about" className="py-20 px-6 bg-white">
+    <section ref={sectionRef} id="about" className="py-20 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Photo placeholder */}
-          <div className="relative aspect-[4/5] rounded-lg overflow-hidden bg-[#F5F3F0]">
+          <div
+            className={`relative aspect-[4/5] rounded-lg overflow-hidden bg-[#F5F3F0] transition-all duration-700 ${
+              visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+            }`}
+          >
             <div className="absolute inset-0 flex items-center justify-center text-[#6B6560]">
               <div className="text-center">
                 <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-[#D4A574]/20 flex items-center justify-center">
@@ -28,17 +56,14 @@ export default function About() {
                 <p className="text-sm">Photo of Nancy</p>
               </div>
             </div>
-            {/* Uncomment and update src when photo is available */}
-            {/* <Image
-              src="/images/nancy.jpg"
-              alt="Nancy - Nail Artist"
-              fill
-              className="object-cover"
-            /> */}
           </div>
 
           {/* Text content */}
-          <div className="text-left">
+          <div
+            className={`text-left transition-all duration-700 delay-200 ${
+              visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+            }`}
+          >
             <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl mb-6">
               About Nancy
             </h2>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -15,6 +15,25 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [visible, setVisible] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setShouldRender(true);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setVisible(true);
+        });
+      });
+    } else {
+      setVisible(false);
+      const timer = setTimeout(() => {
+        setShouldRender(false);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -47,17 +66,21 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     });
   };
 
-  if (!isOpen) return null;
+  if (!shouldRender) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-opacity duration-300 ${
+        visible ? "opacity-100" : "opacity-0"
+      }`}
       onClick={onClose}
     >
       <div className="absolute inset-0 bg-black/50" />
 
       <div
-        className="relative bg-[#FAF8F5] rounded-lg w-full max-w-md p-8 shadow-xl"
+        className={`relative bg-[#FAF8F5] rounded-lg w-full max-w-md p-8 shadow-xl transition-all duration-300 ${
+          visible ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-4"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         <button
