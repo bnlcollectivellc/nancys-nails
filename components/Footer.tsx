@@ -35,6 +35,19 @@ export default function Footer() {
         <p className="text-sm text-gray-400">
           &copy; {new Date().getFullYear()} Nancy&apos;s Nails. All rights reserved.
         </p>
+
+        <p className="text-xs text-gray-500 mt-4">
+          Hand icon by{" "}
+          <a
+            href="https://thenounproject.com/browse/icons/term/woman-hand/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-400 transition-colors"
+          >
+            Laymik
+          </a>{" "}
+          from Noun Project (CC BY 3.0)
+        </p>
       </div>
     </footer>
   );
