@@ -8,7 +8,7 @@ export default function Footer() {
 
         <div className="flex justify-center mb-8">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/nancysnail2026/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-[#D4A574] transition-colors"

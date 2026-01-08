@@ -35,7 +35,7 @@ export default function Header({ onBookClick }: HeaderProps) {
 
         <div className="flex items-center gap-6">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/nancysnail2026/"
             target="_blank"
             rel="noopener noreferrer"
             className={`transition-colors duration-300 ${
