@@ -8,20 +8,28 @@ interface HeaderProps {
 
 export default function Header({ onBookClick }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // Fade in after hero
+    const timer = setTimeout(() => setVisible(true), 300);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled ? "bg-[#FAF8F5] shadow-sm" : "bg-transparent"
-      }`}
+      } ${visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <a href="#" className="flex items-center gap-3">

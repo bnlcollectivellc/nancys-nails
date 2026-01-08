@@ -6,7 +6,7 @@ interface HeroProps {
 
 export default function Hero({ onBookClick }: HeroProps) {
   return (
-    <section className="relative h-[60vh] min-h-[400px]">
+    <section className="relative h-[72vh] min-h-[500px] animate-fade-in">
       <Image
         src="/images/hero.jpg"
         alt="Beautiful nail art"
@@ -17,7 +17,7 @@ export default function Hero({ onBookClick }: HeroProps) {
       <div className="absolute inset-0 bg-black/30" />
 
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-center px-6">
+        <div className="text-center px-6 animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
           <p className="text-white text-lg md:text-xl mb-4 font-light tracking-wide">
             Southern California
           </p>
