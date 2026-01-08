@@ -27,7 +27,7 @@ export default function Header({ onBookClick }: HeaderProps) {
         <a
           href="#"
           className={`font-[family-name:var(--font-playfair)] text-2xl transition-colors duration-300 ${
-            scrolled ? "text-[#2D2A26]" : "text-[#2D2A26]"
+            scrolled ? "text-[#2D2A26]" : "text-white"
           }`}
         >
           Nancy&apos;s Nails
@@ -39,7 +39,7 @@ export default function Header({ onBookClick }: HeaderProps) {
             target="_blank"
             rel="noopener noreferrer"
             className={`transition-colors duration-300 ${
-              scrolled ? "text-[#2D2A26] hover:text-[#8B7355]" : "text-[#2D2A26] hover:text-[#8B7355]"
+              scrolled ? "text-[#2D2A26] hover:text-[#8B7355]" : "text-white hover:text-white/80"
             }`}
             aria-label="Instagram"
           >
