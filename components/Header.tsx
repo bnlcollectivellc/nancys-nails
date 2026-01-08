@@ -24,13 +24,19 @@ export default function Header({ onBookClick }: HeaderProps) {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a
-          href="#"
-          className={`font-[family-name:var(--font-playfair)] text-2xl transition-colors duration-300 ${
-            scrolled ? "text-[#2D2A26]" : "text-white"
-          }`}
-        >
-          Nancy&apos;s Nails
+        <a href="#" className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-[#8B7355] flex items-center justify-center">
+            <span className="font-[family-name:var(--font-playfair)] text-white text-xl font-medium">
+              N
+            </span>
+          </div>
+          <span
+            className={`font-[family-name:var(--font-playfair)] text-xl transition-colors duration-300 hidden sm:block ${
+              scrolled ? "text-[#2D2A26]" : "text-white"
+            }`}
+          >
+            Nancy&apos;s Nails
+          </span>
         </a>
 
         <div className="flex items-center gap-6">
