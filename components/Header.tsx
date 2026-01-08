@@ -74,13 +74,34 @@ export default function Header({ onBookClick }: HeaderProps) {
             </svg>
           </a>
 
+          {/* Mobile: Email icon */}
           <button
             onClick={onBookClick}
-            className={`px-6 py-2 rounded font-medium transition-all duration-300 ${
-              scrolled
-                ? "bg-[#8B7355] text-white hover:bg-[#7A6548]"
-                : "bg-[#8B7355] text-white hover:bg-[#7A6548]"
+            className={`sm:hidden transition-colors duration-300 ${
+              scrolled ? "text-[#2D2A26] hover:text-[#8B7355]" : "text-white hover:text-white/80"
             }`}
+            aria-label="Book Appointment"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+          </button>
+
+          {/* Desktop: Full button */}
+          <button
+            onClick={onBookClick}
+            className="hidden sm:block px-6 py-2 rounded font-medium transition-all duration-300 bg-[#8B7355] text-white hover:bg-[#7A6548]"
           >
             Book Appointment
           </button>

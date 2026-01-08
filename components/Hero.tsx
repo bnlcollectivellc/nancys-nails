@@ -18,13 +18,10 @@ export default function Hero({ onBookClick }: HeroProps) {
 
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center px-6 animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
-          <p className="text-white text-lg md:text-xl mb-4 font-light tracking-wide">
-            Southern California
-          </p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-4xl md:text-6xl text-white mb-6">
+          <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-7xl text-white mb-3">
             Nancy&apos;s Nails
           </h1>
-          <p className="text-white/80 text-lg md:text-xl mb-8 max-w-md mx-auto">
+          <p className="text-white/80 text-lg md:text-xl mb-4 max-w-md mx-auto">
             Beautiful nails, crafted with care
           </p>
           <button
